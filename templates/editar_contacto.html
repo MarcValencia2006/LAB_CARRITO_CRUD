@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5 card p-4">
+        <h3>Editar ID: {{ contacto.id }}</h3>
+        <form action="/editar_contacto/{{ contacto.id }}" method="POST">
+            <input type="text" name="nombre" class="form-control mb-2" value="{{ contacto.nombre }}" required>
+            <input type="email" name="correo" class="form-control mb-2" value="{{ contacto.correo }}" required>
+            <input type="text" name="celular" class="form-control mb-2" value="{{ contacto.celular }}" required>
+            <button class="btn btn-primary w-100">Actualizar</button>
+            <a href="/contactos" class="btn btn-link w-100 text-center">Volver</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

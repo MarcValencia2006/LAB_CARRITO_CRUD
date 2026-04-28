@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+            <h4>Registro</h4>
+            <form action="/contactos" method="POST">
+                <input type="text" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
+                <input type="email" name="correo" class="form-control mb-2" placeholder="Correo" required>
+                <input type="text" name="celular" class="form-control mb-2" placeholder="Celular" required>
+                <button class="btn btn-success w-100">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table shadow-sm">
+            <thead class="table-dark">
+                <tr><th>ID</th><th>Nombre</th><th>Correo</th><th>Celular</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+                {% for c in contactos %}
+                <tr>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.nombre }}</td>
+                    <td>{{ c.correo }}</td>
+                    <td>{{ c.celular }}</td>
+                    <td>
+                        <a href="/editar_contacto/{{ c.id }}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="/eliminar_contacto/{{ c.id }}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
